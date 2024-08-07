@@ -320,3 +320,39 @@
   padding: 5px;
   background-color: #ffffff;
 }
+
+.subtitle {
+  border-bottom: 1px solid #000000;
+  padding: 10px;
+}
+.servicebtn {
+  background-color: #29a31e;
+  color: #ffffff;
+  font-weight: 500;
+}
+.servicebtn:hover {
+  font-size: large;
+  color: #ffffff;
+}
+.table {
+  width: 100%;
+  color: #000000;
+}
+.table tr {
+  border-bottom: 1px solid #000000;
+}
+.table tr td {
+  text-align: left;
+}
+.text-left {
+  text-align: left;
+}
+
+.service-details {
+  /* Other styles for your service details can go here */
+
+  box-shadow: 10px 4px 8px 10px rgba(0, 0, 0, 0.1); /* Example shadow */
+  border-radius: 30px; /* Optional: to make corners rounded */
+  padding: 20px; /* Optional: to add some spacing within the element */
+  background-color: #fff; /* Optional: to set a background color */
+}
