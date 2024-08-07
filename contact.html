@@ -32,6 +32,17 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet" />
+
+    <script
+      type="text/javascript"
+      src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script type="text/javascript">
+      (function () {
+        emailjs.init("78aSim0fBPD5g46qJ"); // Replace 'YOUR_USER_ID' with your actual EmailJS user ID
+      })();
+    </script>
+    <!-- SweetAlert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </head>
 
   <body>
@@ -148,34 +159,51 @@
         <div class="row g-0">
           <div class="col-lg-7">
             <div class="bg-primary h-100 p-5">
-              <form>
+              <form id="contact-form">
                 <div class="row g-3">
                   <div class="col-6">
                     <input
                       type="text"
+                      name="name"
                       class="form-control bg-light border-0 px-4"
                       placeholder="Your Name"
-                      style="height: 55px" />
+                      style="height: 55px"
+                      required />
+                  </div>
+                  <div class="col-6">
+                    <input
+                      type="text"
+                      name="phone"
+                      class="form-control bg-light border-0 px-4"
+                      placeholder="Your Phone"
+                      style="height: 55px"
+                      required />
                   </div>
                   <div class="col-6">
                     <input
                       type="email"
+                      name="email"
                       class="form-control bg-light border-0 px-4"
                       placeholder="Your Email"
-                      style="height: 55px" />
+                      style="height: 55px"
+                      required />
                   </div>
                   <div class="col-12">
                     <input
                       type="text"
                       class="form-control bg-light border-0 px-4"
                       placeholder="Subject"
-                      style="height: 55px" />
+                      name="subject"
+                      style="height: 55px"
+                      required />
                   </div>
                   <div class="col-12">
                     <textarea
                       class="form-control bg-light border-0 px-4 py-3"
                       rows="2"
-                      placeholder="Message"></textarea>
+                      name="message"
+                      placeholder="Message"
+                      required></textarea>
                   </div>
                   <div class="col-12">
                     <button class="btn btn-secondary w-100 py-3" type="submit">
@@ -379,5 +407,47 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script type="text/javascript">
+      document
+        .getElementById("contact-form")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          // Show sending alert
+          Swal.fire({
+            title: "Sending...",
+            text: "Please wait while we send your message.",
+            icon: "info",
+            allowOutsideClick: false,
+            showConfirmButton: false,
+            didOpen: () => {
+              Swal.showLoading();
+            },
+          });
+
+          const serviceID = "service_xdyorci"; // Replace with your EmailJS service ID
+          const templateID = "template_ijx4wwg"; // Replace with your EmailJS template ID
+
+          emailjs.sendForm(serviceID, templateID, this).then(
+            () => {
+              Swal.fire({
+                title: "Success!",
+                text: "Your message has been sent.",
+                icon: "success",
+                confirmButtonText: "OK",
+              });
+              document.getElementById("contact-form").reset();
+            },
+            (error) => {
+              Swal.fire({
+                title: "Error!",
+                text: `An error occurred: ${error.text}`,
+                icon: "error",
+                confirmButtonText: "OK",
+              });
+            }
+          );
+        });
+    </script>
   </body>
 </html>
