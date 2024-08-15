@@ -127,7 +127,16 @@
     url(../img/png/2.png) bottom right no-repeat;
   background-size: contain;
 }
-
+.bg-tomato {
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(255, 153, 51, 0)),
+    url(../img/tomato.jpg) bottom right no-repeat;
+  background-size: contain;
+}
+.bg-tomatoes {
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(255, 153, 51, 0)),
+    url(../img/tomatoes.jpg) bottom right no-repeat;
+  background-size: contain;
+}
 .service-item {
   box-shadow: 0 0 45px #ededed;
   transition: 0.5s;
@@ -355,4 +364,7 @@
   border-radius: 30px; /* Optional: to make corners rounded */
   padding: 20px; /* Optional: to add some spacing within the element */
   background-color: #fff; /* Optional: to set a background color */
+}
+.text-white {
+  color: #ffffff;
 }
